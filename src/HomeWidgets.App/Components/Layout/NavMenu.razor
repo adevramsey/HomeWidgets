@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+
+<MudNavMenu>
+    <MudText Typo="Typo.subtitle1" Class="pa-4">Menu</MudText>
+
+    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home" OnClick="HandleNavigate">Home</MudNavLink>
+    <MudNavLink Href="/dashboard" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Dashboard" OnClick="HandleNavigate">Dashboard</MudNavLink>
+    <MudNavLink Href="/weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.WbSunny" OnClick="HandleNavigate">Weather</MudNavLink>
+    <MudNavLink Href="/counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add" OnClick="HandleNavigate">Counter</MudNavLink>
+</MudNavMenu>
+
+@code {
+    [Parameter] public EventCallback OnNavigate { get; set; }
+
+    private async Task HandleNavigate(MouseEventArgs _)
+    {
+        if (OnNavigate.HasDelegate)
+            await OnNavigate.InvokeAsync();
+    }
+}

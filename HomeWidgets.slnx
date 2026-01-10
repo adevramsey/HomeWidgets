@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/HomeWidgets.App/HomeWidgets.App.csproj" />
+  <Project Path="src/HomeWidgets.Api/HomeWidgets.Api.csproj" />
+  <Project Path="src/HomeWidgets.Shared/HomeWidgets.Shared.csproj" />
+</Solution>

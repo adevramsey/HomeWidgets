@@ -1,0 +1,97 @@
+# =============================================================================
+# .NET / ASP.NET Core
+# =============================================================================
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio / Rider
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+
+# Build results
+*.dll
+*.exe
+*.pdb
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+TestResult.xml
+
+# Coverage
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+
+# =============================================================================
+# macOS
+# =============================================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# =============================================================================
+# Environment & Secrets
+# =============================================================================
+.env
+.env.local
+.env.*.local
+appsettings.*.json
+!appsettings.json
+!appsettings.Development.json
+
+# User secrets (local development)
+secrets.json
+
+# =============================================================================
+# Docker
+# =============================================================================
+# Don't ignore compose files, but ignore local overrides
+docker-compose.override.yml
+
+# =============================================================================
+# Misc
+# =============================================================================
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Node (if using any JS tooling)
+node_modules/
+

@@ -1,0 +1,36 @@
+﻿@inherits LayoutComponentBase
+@using HomeWidgets.App.Theme
+
+<MudThemeProvider Theme="@AppTheme.Dark" IsDarkMode="true" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Color="Color.Primary" Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="ToggleDrawer" />
+        <MudText Typo="Typo.h6" Class="ml-2">Home Widgets</MudText>
+        <MudSpacer />
+
+        <MudIconButton Icon="@Icons.Material.Filled.Info" Color="Color.Inherit" Href="https://learn.microsoft.com/aspnet/core/" Target="_blank" />
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="_drawerOpen" Variant="DrawerVariant.Responsive" Elevation="1">
+        <NavMenu OnNavigate="CloseDrawer" />
+    </MudDrawer>
+
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.False" Class="pa-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _drawerOpen = true;
+
+    private void ToggleDrawer()
+        => _drawerOpen = !_drawerOpen;
+
+    private void CloseDrawer()
+        => _drawerOpen = false;
+}
