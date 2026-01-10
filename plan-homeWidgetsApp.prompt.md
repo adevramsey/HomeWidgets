@@ -7,12 +7,42 @@ Blazor Server frontend with .NET Core backend, PostgreSQL database (Docker), Git
 
 ## Tech Stack
 - **Frontend**: Blazor Server (Interactive SSR) with MudBlazor
-- **Backend**: ASP.NET Core Web API (.NET 8/9+)
+- **Backend**: ASP.NET Core Web API (.NET 10)
 - **Database**: PostgreSQL (Dockerized)
 - **ORM**: Entity Framework Core
 - **Authentication**: JWT (JSON Web Tokens)
 - **CI/CD**: GitHub Actions Pipelines
 - **Testing**: xUnit (Unit), Integration Tests
+
+---
+
+## Git Branching Strategy (GitFlow)
+
+| Branch | Purpose |
+|--------|---------|
+| `main` | Production-ready code only |
+| `develop` | Integration branch |
+| `feature/*` | Individual features (e.g., `feature/phase1-database-setup`) |
+| `bugfix/*` | Bug fixes |
+| `release/*` | Release preparation |
+| `hotfix/*` | Emergency production fixes |
+
+**Workflow**: `feature/*` → PR → `develop` → `release/*` → `main`
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details.
+
+---
+
+## Testing Strategy (TDD-Light)
+
+Write tests **alongside** code, not strictly before.
+
+| Layer | Test Type | When | Coverage Goal |
+|-------|-----------|------|---------------|
+| Core/Domain | Unit Tests | With code | 90%+ |
+| Application | Unit Tests | With code | 80%+ |
+| Infrastructure | Integration Tests | After impl | 60%+ |
+| API | Integration Tests | After impl | 70%+ |
 
 ---
 
@@ -35,6 +65,7 @@ HomeWidgets/
 ---
 
 ## Phase 1: Foundation & Authentication
+**Branch**: `feature/phase1-foundation-auth`
 
 ### 1.1 Database Setup (PostgreSQL + Docker)
 - [ ] Update `compose.yaml` with PostgreSQL service
@@ -46,6 +77,7 @@ HomeWidgets/
 - [ ] Create `Widget` entity
 - [ ] Create `UserWidget` entity (join table for user's widgets + order)
 - [ ] Define repository interfaces (IUserRepository, IWidgetRepository)
+- [ ] **TESTS**: Unit tests for entity validation logic
 
 ### 1.3 JWT Authentication
 - [ ] Install JWT packages (`Microsoft.AspNetCore.Authentication.JwtBearer`)
@@ -53,20 +85,24 @@ HomeWidgets/
 - [ ] Implement login/register endpoints in API
 - [ ] Create protected routes in Blazor App
 - [ ] Store JWT in HttpOnly cookie or secure storage
+- [ ] **TESTS**: Unit tests for AuthService, Integration tests for auth endpoints
 
 ---
 
 ## Phase 2: Dashboard & Widget System
+**Branch**: `feature/phase2-dashboard-widgets`
 
 ### 2.1 Widget Library
 - [ ] Create seed data for initial widgets
 - [ ] Widget types: Clock, Weather, Notes, Calendar, etc.
 - [ ] Each widget has: Id, Name, Description, ComponentType, DefaultConfig
+- [ ] **TESTS**: Unit tests for widget entity, seed data validation
 
 ### 2.2 Dashboard Layout
 - [ ] Create `Dashboard.razor` page
 - [ ] Implement responsive grid layout using MudBlazor
 - [ ] Display user's saved widgets in correct order
+- [ ] **TESTS**: Integration tests for dashboard API endpoints
 
 ### 2.3 Drag & Drop
 - [ ] Implement drag-and-drop reordering (MudBlazor DragDrop or custom JS interop)
@@ -79,46 +115,62 @@ HomeWidgets/
 - [ ] User can add widgets to dashboard
 - [ ] User can remove widgets from dashboard
 - [ ] Auto-save on add/remove
+- [ ] **TESTS**: Unit tests for widget ordering logic, Integration tests for CRUD
 
 ---
 
 ## Phase 3: Custom Widget Creator (AddWidget UI)
+**Branch**: `feature/phase3-widget-creator`
 
 ### 3.1 Guided Widget Creation
 - [ ] Step-by-step wizard UI
 - [ ] User describes widget purpose
 - [ ] System suggests parameters based on widget type
 - [ ] Validation against application constraints
+- [ ] **TESTS**: Unit tests for validation logic
 
 ### 3.2 Widget Templates
 - [ ] Pre-defined templates for common widgets
 - [ ] Customizable colors, sizes, data sources
 - [ ] Preview before adding
+- [ ] **TESTS**: Unit tests for template generation
 
 ---
 
-## Phase 4: Testing
+## Phase 4: Test Coverage & Quality
+**Branch**: `feature/phase4-test-coverage`
 
-### 4.1 Unit Tests
-- [ ] Test domain entities
-- [ ] Test application services
-- [ ] Test authentication logic
-- [ ] Mock repositories
+### 4.1 Unit Test Completion
+- [ ] Ensure 90%+ coverage on Core/Domain
+- [ ] Ensure 80%+ coverage on Application layer
+- [ ] Add missing edge case tests
 
-### 4.2 Integration Tests
-- [ ] Test API endpoints with TestServer
-- [ ] Test database operations with in-memory/container DB
-- [ ] Test authentication flow
+### 4.2 Integration Test Completion
+- [ ] Test all API endpoints with TestServer
+- [ ] Test database operations with Testcontainers (PostgreSQL)
+- [ ] Test full authentication flow
+
+### 4.3 Code Quality
+- [ ] Add code analyzers (StyleCop, SonarAnalyzer)
+- [ ] Fix all warnings
+- [ ] Add XML documentation to public APIs
 
 ---
 
 ## Phase 5: CI/CD Pipeline
+**Branch**: `feature/phase5-cicd`
 
 ### 5.1 GitHub Actions
 - [ ] Create `.github/workflows/ci.yml`
-- [ ] Build & test on push/PR
+- [ ] Build & test on push/PR to develop
+- [ ] Run tests with coverage reporting
 - [ ] Docker image build
 - [ ] Deploy to hosting (optional: Azure, Railway, etc.)
+
+### 5.2 Branch Protection
+- [ ] Protect `main` and `develop` branches
+- [ ] Require PR reviews
+- [ ] Require passing tests before merge
 
 ---
 
@@ -144,7 +196,11 @@ HomeWidgets/
 - [x] Project structure created
 - [x] MudBlazor integrated
 - [x] Dark theme configured
-- [ ] **NEXT**: Phase 1.1 - Database Setup with Docker
+- [x] Git repository initialized
+- [x] GitHub repository created (private)
+- [x] GitFlow branching strategy implemented (`main` + `develop`)
+- [x] CONTRIBUTING.md with branching & testing guidelines
+- [ ] **NEXT**: Create `feature/phase1-foundation-auth` branch and start Phase 1
 
 ---
 
