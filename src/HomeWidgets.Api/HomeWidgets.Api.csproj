@@ -4,6 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>homewidgets-api-dev</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HomeWidgets.Infrastructure\HomeWidgets.Infrastructure.csproj" />
     <ProjectReference Include="..\HomeWidgets.Shared\HomeWidgets.Shared.csproj" />
   </ItemGroup>
 
