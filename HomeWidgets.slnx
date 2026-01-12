@@ -7,5 +7,7 @@
     <Project Path="src/HomeWidgets.Shared/HomeWidgets.Shared.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/HomeWidgets.UnitTests/HomeWidgets.UnitTests.csproj" />
+    <Project Path="tests/HomeWidgets.IntegrationTests/HomeWidgets.IntegrationTests.csproj" />
   </Folder>
 </Solution>
