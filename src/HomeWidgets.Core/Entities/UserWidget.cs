@@ -12,13 +12,14 @@ public class UserWidget : BaseEntity
     /// <summary>
     /// Creates a new user-widget association.
     /// </summary>
-    internal UserWidget(User user, Widget widget, int order)
+    internal UserWidget(User user, Widget widget, int order, bool isActive)
     {
         UserId = user.Id;
         User = user;
         WidgetId = widget.Id;
         Widget = widget;
         Order = order;
+        IsActive = isActive;
     }
 
     /// <summary>
@@ -46,6 +47,8 @@ public class UserWidget : BaseEntity
     /// Lower numbers appear first.
     /// </summary>
     public int Order { get; private set; }
+    
+    public bool IsActive { get; private set; }
 
     /// <summary>
     /// User-specific configuration JSON (overrides widget's default config).

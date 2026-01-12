@@ -108,8 +108,9 @@ public class User : BaseEntity
 
         // Calculate position: either specified or append to end
         var order = position ?? (_userWidgets.Count > 0 ? _userWidgets.Max(uw => uw.Order) + 1 : 0);
+        bool isActive = true;
 
-        var userWidget = new UserWidget(this, widget, order);
+        var userWidget = new UserWidget(this, widget, order, isActive);
         _userWidgets.Add(userWidget);
         MarkAsUpdated();
 
