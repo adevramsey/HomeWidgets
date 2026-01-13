@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
+    <ProjectReference Include="..\HomeWidgets.Infrastructure\HomeWidgets.Infrastructure.csproj" />
     <ProjectReference Include="..\HomeWidgets.Shared\HomeWidgets.Shared.csproj" />
   </ItemGroup>
 

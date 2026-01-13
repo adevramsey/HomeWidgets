@@ -40,6 +40,9 @@ public static class DependencyInjection
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<ITokenService, TokenService>();
 
+        // Database seeding
+        services.AddScoped<DbSeeder>();
+
         // Configure JWT settings
         var jwtSettings = configuration.GetSection(JwtSettings.SectionName).Get<JwtSettings>()
             ?? throw new InvalidOperationException("JwtSettings not found in configuration.");
