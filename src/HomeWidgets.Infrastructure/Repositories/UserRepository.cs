@@ -14,6 +14,12 @@ public class UserRepository : Repository<User>, IUserRepository
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="email"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
     {
         var normalizedEmail = email.ToLowerInvariant().Trim();
@@ -28,6 +34,12 @@ public class UserRepository : Repository<User>, IUserRepository
             .AnyAsync(u => u.Email == normalizedEmail, cancellationToken);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<User?> GetByIdWithWidgetsAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await _dbSet

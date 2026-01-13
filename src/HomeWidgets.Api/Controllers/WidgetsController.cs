@@ -2,8 +2,10 @@ using System.Security.Claims;
 using HomeWidgets.Api.Contracts.Auth;
 using HomeWidgets.Core.Entities;
 using HomeWidgets.Core.Interfaces;
+using HomeWidgets.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomeWidgets.Api.Controllers;
 
@@ -13,14 +15,17 @@ public class WidgetsController : ControllerBase
 {
     private readonly IWidgetRepository _widgetRepository;
     private readonly IUserRepository _userRepository;
+    private readonly AppDbContext _context;
     
     public WidgetsController(
         IWidgetRepository widgetRepository,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        AppDbContext context)
     {
         _widgetRepository = widgetRepository;
         _userRepository = userRepository;
-        
+        _context = context;
+
     }
 
     private Guid? GetCurrentUserId()
@@ -79,11 +84,117 @@ public class WidgetsController : ControllerBase
 
         try
         {
-            user.AddWidget(widget, request.Position);
-            await _userRepository.UpdateAsync(user, cancellationToken);
+            var addedUserWidget = user.AddWidget(widget, request.Position);
+            _context.Entry(addedUserWidget).State = EntityState.Added;
+            await _context.SaveChangesAsync(cancellationToken);
             return CreatedAtAction(nameof(GetMyWidgets), null, widget);
         }
         catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPut("me/{widgetId}/activate")]
+    [Authorize]
+    public async Task<ActionResult> ActivateWidget(
+        [FromRoute] Guid widgetId, CancellationToken cancellationToken)
+    {
+        if (GetCurrentUserId() is not Guid userId)
+            return Unauthorized();
+        
+        var user = await _userRepository.GetByIdWithWidgetsAsync(userId, cancellationToken);
+        if (user is null)
+            return NotFound("User not found.");
+
+        var widget = await _widgetRepository.GetByIdAsync(widgetId, cancellationToken);
+        if (widget is null)
+            return NotFound($"Widget with ID {widgetId} not found.");
+
+        try
+        {
+            user.ActivateWidget(widget);
+            await _context.SaveChangesAsync(cancellationToken);
+            return NoContent();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPut("me/{widgetId}/deactivate")]
+    [Authorize]
+    public async Task<ActionResult> DeactivateWidget(
+        [FromRoute] Guid widgetId, CancellationToken cancellationToken)
+    {
+        if (GetCurrentUserId() is not Guid userId)
+            return Unauthorized();
+        
+        var user = await _userRepository.GetByIdWithWidgetsAsync(userId, cancellationToken);
+        if (user is null)
+            return NotFound("User not found.");
+
+        var widget = await _widgetRepository.GetByIdAsync(widgetId, cancellationToken);
+        if (widget is null)
+            return NotFound($"Widget with ID {widgetId} not found.");
+
+        try
+        {
+            user.DeactivateWidget(widget);
+            await _context.SaveChangesAsync(cancellationToken);
+            return NoContent();
+        } catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpDelete("me/{widgetId}")]
+    [Authorize]
+    public async Task<ActionResult> RemoveWidgetFromDashboard(
+        [FromRoute] Guid widgetId, CancellationToken cancellationToken)
+    {
+        if (GetCurrentUserId() is not Guid userId)
+            return Unauthorized();
+        
+        var user = await _userRepository.GetByIdWithWidgetsAsync(userId, cancellationToken);
+        if (user is null)
+            return NotFound("User not found.");
+        
+        var widget = await _widgetRepository.GetByIdAsync(widgetId, cancellationToken);
+        if (widget is null)
+            return NotFound($"Widget with ID {widgetId} not found.");
+
+        try
+        {
+            user.RemoveWidget(widget.Id);
+            await _context.SaveChangesAsync(cancellationToken);
+            return NoContent();
+        } catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPut("me/reorder")]
+    [Authorize]
+    public async Task<ActionResult> ReorderWidgets(
+        [FromBody] ReorderWidgetsRequest request, CancellationToken cancellationToken)
+    {
+        if (GetCurrentUserId() is not Guid userId)
+            return Unauthorized();
+        
+        var user = await _userRepository.GetByIdWithWidgetsAsync(userId, cancellationToken);
+        if (user is null)
+            return NotFound("User not found.");
+
+        try
+        {
+            user.ReorderWidgets(request.WidgetIdsInOrder);
+            await _context.SaveChangesAsync(cancellationToken);
+            return NoContent();
+        } catch (InvalidOperationException ex)
         {
             return BadRequest(ex.Message);
         }

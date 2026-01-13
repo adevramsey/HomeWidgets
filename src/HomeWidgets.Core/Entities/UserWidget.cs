@@ -77,5 +77,15 @@ public class UserWidget : BaseEntity
         Config = configJson;
         MarkAsUpdated();
     }
+    
+    /// <summary>
+    /// Sets a widget as active or inactive.
+    /// </summary>
+    /// <param name="isActive"></param>
+    internal void SetActive(bool isActive)
+    {
+        IsActive = isActive;
+        MarkAsUpdated();
+    }
 }
 

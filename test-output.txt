@@ -1,0 +1,364 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  HomeWidgets.Shared -> /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Shared/bin/Debug/net10.0/HomeWidgets.Shared.dll
+  HomeWidgets.Core -> /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Core/bin/Debug/net10.0/HomeWidgets.Core.dll
+  HomeWidgets.Infrastructure -> /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Infrastructure/bin/Debug/net10.0/HomeWidgets.Infrastructure.dll
+  HomeWidgets.Api -> /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Api/bin/Debug/net10.0/HomeWidgets.Api.dll
+  HomeWidgets.IntegrationTests -> /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/bin/Debug/net10.0/HomeWidgets.IntegrationTests.dll
+Test run for /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/bin/Debug/net10.0/HomeWidgets.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (arm64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+/Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/bin/Debug/net10.0/HomeWidgets.IntegrationTests.dll
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.1)
+[xUnit.net 00:00:00.05]   Discovering: HomeWidgets.IntegrationTests
+[xUnit.net 00:00:00.07]   Discovered:  HomeWidgets.IntegrationTests
+[xUnit.net 00:00:00.07]   Starting:    HomeWidgets.IntegrationTests
+[testcontainers.org 00:00:00.07] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.1.3
+  Kernel Version: 6.12.54-linuxkit
+  API Version: 1.52
+  Operating System: Docker Desktop
+  Total Memory: 3.83 GB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/alan/Library/Containers/com.docker.docker/Data/docker-cli.sock
+[testcontainers.org 00:00:00.21] Docker container 08d5b2417675 created
+[testcontainers.org 00:00:00.29] Start Docker container 08d5b2417675
+[testcontainers.org 00:00:00.49] Wait for Docker container 08d5b2417675 to complete readiness checks
+[testcontainers.org 00:00:00.50] Docker container 08d5b2417675 ready
+[testcontainers.org 00:00:00.56] Docker container 9747c499dca4 created
+[testcontainers.org 00:00:00.58] Start Docker container 9747c499dca4
+[testcontainers.org 00:00:00.82] Wait for Docker container 9747c499dca4 to complete readiness checks
+[testcontainers.org 00:00:00.83] Execute "pg_isready --host localhost --dbname homewidgets --username homewidgets" at Docker container 9747c499dca4
+[testcontainers.org 00:00:01.99] Execute "pg_isready --host localhost --dbname homewidgets --username homewidgets" at Docker container 9747c499dca4
+[testcontainers.org 00:00:02.09] Docker container 9747c499dca4 ready
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+      Failed executing DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";
+info: Microsoft.EntityFrameworkCore.Migrations[20411]
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+info: Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20260111034442_InitialCreate'.
+info: Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20260112160000_AddIsActiveToUserWidget'.
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (16ms) [Parameters=[@normalizedEmail='?'], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (
+          SELECT 1
+          FROM users AS u
+          WHERE u."Email" = @normalizedEmail)
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?', @p6='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO users ("Id", "CreatedAt", "DisplayName", "Email", "IsEmailVerified", "PasswordHash", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = DateTime), @p3='?' (DbType = Object), @p4='?', @p5='?' (DbType = Int32), @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO widgets ("Id", "ComponentType", "CreatedAt", "DefaultConfig", "Description", "DisplayOrder", "Icon", "IsActive", "Name", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?'], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (
+          SELECT 1
+          FROM users AS u
+          WHERE u."Email" = @normalizedEmail)
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?', @p6='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO users ("Id", "CreatedAt", "DisplayName", "Email", "IsEmailVerified", "PasswordHash", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = DateTime), @p3='?' (DbType = Object), @p4='?', @p5='?' (DbType = Int32), @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO widgets ("Id", "ComponentType", "CreatedAt", "DefaultConfig", "Description", "DisplayOrder", "Icon", "IsActive", "Name", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@id='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+      SELECT u1."Id", u1."CreatedAt", u1."DisplayName", u1."Email", u1."IsEmailVerified", u1."PasswordHash", u1."UpdatedAt", s."Id", s."Config", s."CreatedAt", s."IsActive", s."Order", s."UpdatedAt", s."UserId", s."WidgetId", s."Id0", s."ComponentType", s."CreatedAt0", s."DefaultConfig", s."Description", s."DisplayOrder", s."Icon", s."IsActive0", s."Name", s."UpdatedAt0"
+      FROM (
+          SELECT u."Id", u."CreatedAt", u."DisplayName", u."Email", u."IsEmailVerified", u."PasswordHash", u."UpdatedAt"
+          FROM users AS u
+          WHERE u."Id" = @id
+          LIMIT 1
+      ) AS u1
+      LEFT JOIN (
+          SELECT u0."Id", u0."Config", u0."CreatedAt", u0."IsActive", u0."Order", u0."UpdatedAt", u0."UserId", u0."WidgetId", w."Id" AS "Id0", w."ComponentType", w."CreatedAt" AS "CreatedAt0", w."DefaultConfig", w."Description", w."DisplayOrder", w."Icon", w."IsActive" AS "IsActive0", w."Name", w."UpdatedAt" AS "UpdatedAt0"
+          FROM user_widgets AS u0
+          INNER JOIN widgets AS w ON u0."WidgetId" = w."Id"
+      ) AS s ON u1."Id" = s."UserId"
+      ORDER BY u1."Id", s."Id"
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+      SELECT w."Id", w."ComponentType", w."CreatedAt", w."DefaultConfig", w."Description", w."DisplayOrder", w."Icon", w."IsActive", w."Name", w."UpdatedAt"
+      FROM widgets AS w
+      WHERE w."Id" = @p
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = Object), @p1='?' (DbType = DateTime), @p2='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime), @p5='?' (DbType = Guid), @p6='?' (DbType = Guid), @p9='?' (DbType = Guid), @p8='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      UPDATE user_widgets SET "Config" = @p0, "CreatedAt" = @p1, "IsActive" = @p2, "Order" = @p3, "UpdatedAt" = @p4, "UserId" = @p5, "WidgetId" = @p6
+      WHERE "Id" = @p7;
+      UPDATE users SET "UpdatedAt" = @p8
+      WHERE "Id" = @p9;
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See https://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Update.Internal.NpgsqlModificationCommandBatch.ThrowAggregateUpdateConcurrencyExceptionAsync(RelationalDataReader reader, Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Update.Internal.NpgsqlModificationCommandBatch.Consume(RelationalDataReader reader, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+         at HomeWidgets.Infrastructure.Repositories.Repository`1.UpdateAsync(T entity, CancellationToken cancellationToken) in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Infrastructure/Repositories/Repository.cs:line 46
+         at HomeWidgets.Api.Controllers.WidgetsController.UpdateUserDashboard(AddWidgetRequest request, CancellationToken cancellationToken) in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Api/Controllers/WidgetsController.cs:line 83
+         at lambda_method739(Closure, Object)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[xUnit.net 00:00:03.45]     HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithPosition_AddsWidgetAtSpecifiedPosition [FAIL]
+[xUnit.net 00:00:03.45]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:03.45]       Expected: Created
+[xUnit.net 00:00:03.45]       Actual:   InternalServerError
+[xUnit.net 00:00:03.45]       Stack Trace:
+[xUnit.net 00:00:03.45]         /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/Widgets/AddWidgetTests.cs(136,0): at HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithPosition_AddsWidgetAtSpecifiedPosition()
+[xUnit.net 00:00:03.45]         --- End of stack trace from previous location ---
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?'], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (
+          SELECT 1
+          FROM users AS u
+          WHERE u."Email" = @normalizedEmail)
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?', @p6='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO users ("Id", "CreatedAt", "DisplayName", "Email", "IsEmailVerified", "PasswordHash", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = DateTime), @p3='?' (DbType = Object), @p4='?', @p5='?' (DbType = Int32), @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO widgets ("Id", "ComponentType", "CreatedAt", "DefaultConfig", "Description", "DisplayOrder", "Icon", "IsActive", "Name", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@id='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+      SELECT u1."Id", u1."CreatedAt", u1."DisplayName", u1."Email", u1."IsEmailVerified", u1."PasswordHash", u1."UpdatedAt", s."Id", s."Config", s."CreatedAt", s."IsActive", s."Order", s."UpdatedAt", s."UserId", s."WidgetId", s."Id0", s."ComponentType", s."CreatedAt0", s."DefaultConfig", s."Description", s."DisplayOrder", s."Icon", s."IsActive0", s."Name", s."UpdatedAt0"
+      FROM (
+          SELECT u."Id", u."CreatedAt", u."DisplayName", u."Email", u."IsEmailVerified", u."PasswordHash", u."UpdatedAt"
+          FROM users AS u
+          WHERE u."Id" = @id
+          LIMIT 1
+      ) AS u1
+      LEFT JOIN (
+          SELECT u0."Id", u0."Config", u0."CreatedAt", u0."IsActive", u0."Order", u0."UpdatedAt", u0."UserId", u0."WidgetId", w."Id" AS "Id0", w."ComponentType", w."CreatedAt" AS "CreatedAt0", w."DefaultConfig", w."Description", w."DisplayOrder", w."Icon", w."IsActive" AS "IsActive0", w."Name", w."UpdatedAt" AS "UpdatedAt0"
+          FROM user_widgets AS u0
+          INNER JOIN widgets AS w ON u0."WidgetId" = w."Id"
+      ) AS s ON u1."Id" = s."UserId"
+      ORDER BY u1."Id", s."Id"
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+      SELECT w."Id", w."ComponentType", w."CreatedAt", w."DefaultConfig", w."Description", w."DisplayOrder", w."Icon", w."IsActive", w."Name", w."UpdatedAt"
+      FROM widgets AS w
+      WHERE w."Id" = @p
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = Object), @p1='?' (DbType = DateTime), @p2='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime), @p5='?' (DbType = Guid), @p6='?' (DbType = Guid), @p9='?' (DbType = Guid), @p8='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      UPDATE user_widgets SET "Config" = @p0, "CreatedAt" = @p1, "IsActive" = @p2, "Order" = @p3, "UpdatedAt" = @p4, "UserId" = @p5, "WidgetId" = @p6
+      WHERE "Id" = @p7;
+      UPDATE users SET "UpdatedAt" = @p8
+      WHERE "Id" = @p9;
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See https://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Update.Internal.NpgsqlModificationCommandBatch.ThrowAggregateUpdateConcurrencyExceptionAsync(RelationalDataReader reader, Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Update.Internal.NpgsqlModificationCommandBatch.Consume(RelationalDataReader reader, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+         at HomeWidgets.Infrastructure.Repositories.Repository`1.UpdateAsync(T entity, CancellationToken cancellationToken) in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Infrastructure/Repositories/Repository.cs:line 46
+         at HomeWidgets.Api.Controllers.WidgetsController.UpdateUserDashboard(AddWidgetRequest request, CancellationToken cancellationToken) in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Api/Controllers/WidgetsController.cs:line 83
+         at lambda_method739(Closure, Object)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[xUnit.net 00:00:03.49]     HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WhenWidgetAlreadyExists_Returns400BadRequest [FAIL]
+[xUnit.net 00:00:03.49]       System.Net.Http.HttpRequestException : Response status code does not indicate success: 500 (Internal Server Error).
+[xUnit.net 00:00:03.49]       Stack Trace:
+[xUnit.net 00:00:03.49]            at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+[xUnit.net 00:00:03.49]         /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/Widgets/AddWidgetTests.cs(114,0): at HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WhenWidgetAlreadyExists_Returns400BadRequest()
+[xUnit.net 00:00:03.49]         --- End of stack trace from previous location ---
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?'], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (
+          SELECT 1
+          FROM users AS u
+          WHERE u."Email" = @normalizedEmail)
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?', @p6='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO users ("Id", "CreatedAt", "DisplayName", "Email", "IsEmailVerified", "PasswordHash", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = DateTime), @p3='?' (DbType = Object), @p4='?', @p5='?' (DbType = Int32), @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO widgets ("Id", "ComponentType", "CreatedAt", "DefaultConfig", "Description", "DisplayOrder", "Icon", "IsActive", "Name", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@id='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+      SELECT u1."Id", u1."CreatedAt", u1."DisplayName", u1."Email", u1."IsEmailVerified", u1."PasswordHash", u1."UpdatedAt", s."Id", s."Config", s."CreatedAt", s."IsActive", s."Order", s."UpdatedAt", s."UserId", s."WidgetId", s."Id0", s."ComponentType", s."CreatedAt0", s."DefaultConfig", s."Description", s."DisplayOrder", s."Icon", s."IsActive0", s."Name", s."UpdatedAt0"
+      FROM (
+          SELECT u."Id", u."CreatedAt", u."DisplayName", u."Email", u."IsEmailVerified", u."PasswordHash", u."UpdatedAt"
+          FROM users AS u
+          WHERE u."Id" = @id
+          LIMIT 1
+      ) AS u1
+      LEFT JOIN (
+          SELECT u0."Id", u0."Config", u0."CreatedAt", u0."IsActive", u0."Order", u0."UpdatedAt", u0."UserId", u0."WidgetId", w."Id" AS "Id0", w."ComponentType", w."CreatedAt" AS "CreatedAt0", w."DefaultConfig", w."Description", w."DisplayOrder", w."Icon", w."IsActive" AS "IsActive0", w."Name", w."UpdatedAt" AS "UpdatedAt0"
+          FROM user_widgets AS u0
+          INNER JOIN widgets AS w ON u0."WidgetId" = w."Id"
+      ) AS s ON u1."Id" = s."UserId"
+      ORDER BY u1."Id", s."Id"
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+      SELECT w."Id", w."ComponentType", w."CreatedAt", w."DefaultConfig", w."Description", w."DisplayOrder", w."Icon", w."IsActive", w."Name", w."UpdatedAt"
+      FROM widgets AS w
+      WHERE w."Id" = @p
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = Object), @p1='?' (DbType = DateTime), @p2='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime), @p5='?' (DbType = Guid), @p6='?' (DbType = Guid), @p9='?' (DbType = Guid), @p8='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      UPDATE user_widgets SET "Config" = @p0, "CreatedAt" = @p1, "IsActive" = @p2, "Order" = @p3, "UpdatedAt" = @p4, "UserId" = @p5, "WidgetId" = @p6
+      WHERE "Id" = @p7;
+      UPDATE users SET "UpdatedAt" = @p8
+      WHERE "Id" = @p9;
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See https://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Update.Internal.NpgsqlModificationCommandBatch.ThrowAggregateUpdateConcurrencyExceptionAsync(RelationalDataReader reader, Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Update.Internal.NpgsqlModificationCommandBatch.Consume(RelationalDataReader reader, Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+         at HomeWidgets.Infrastructure.Repositories.Repository`1.UpdateAsync(T entity, CancellationToken cancellationToken) in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Infrastructure/Repositories/Repository.cs:line 46
+         at HomeWidgets.Api.Controllers.WidgetsController.UpdateUserDashboard(AddWidgetRequest request, CancellationToken cancellationToken) in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/src/HomeWidgets.Api/Controllers/WidgetsController.cs:line 83
+         at lambda_method739(Closure, Object)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[xUnit.net 00:00:03.52]     HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithValidRequest_Returns201Created [FAIL]
+[xUnit.net 00:00:03.52]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:03.52]       Expected: Created
+[xUnit.net 00:00:03.52]       Actual:   InternalServerError
+[xUnit.net 00:00:03.52]       Stack Trace:
+[xUnit.net 00:00:03.52]         /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/Widgets/AddWidgetTests.cs(68,0): at HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithValidRequest_Returns201Created()
+[xUnit.net 00:00:03.52]         --- End of stack trace from previous location ---
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?'], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (
+          SELECT 1
+          FROM users AS u
+          WHERE u."Email" = @normalizedEmail)
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?', @p6='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO users ("Id", "CreatedAt", "DisplayName", "Email", "IsEmailVerified", "PasswordHash", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = DateTime), @p3='?' (DbType = Object), @p4='?', @p5='?' (DbType = Int32), @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO widgets ("Id", "ComponentType", "CreatedAt", "DefaultConfig", "Description", "DisplayOrder", "Icon", "IsActive", "Name", "UpdatedAt")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@id='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+      SELECT u1."Id", u1."CreatedAt", u1."DisplayName", u1."Email", u1."IsEmailVerified", u1."PasswordHash", u1."UpdatedAt", s."Id", s."Config", s."CreatedAt", s."IsActive", s."Order", s."UpdatedAt", s."UserId", s."WidgetId", s."Id0", s."ComponentType", s."CreatedAt0", s."DefaultConfig", s."Description", s."DisplayOrder", s."Icon", s."IsActive0", s."Name", s."UpdatedAt0"
+      FROM (
+          SELECT u."Id", u."CreatedAt", u."DisplayName", u."Email", u."IsEmailVerified", u."PasswordHash", u."UpdatedAt"
+          FROM users AS u
+          WHERE u."Id" = @id
+          LIMIT 1
+      ) AS u1
+      LEFT JOIN (
+          SELECT u0."Id", u0."Config", u0."CreatedAt", u0."IsActive", u0."Order", u0."UpdatedAt", u0."UserId", u0."WidgetId", w."Id" AS "Id0", w."ComponentType", w."CreatedAt" AS "CreatedAt0", w."DefaultConfig", w."Description", w."DisplayOrder", w."Icon", w."IsActive" AS "IsActive0", w."Name", w."UpdatedAt" AS "UpdatedAt0"
+          FROM user_widgets AS u0
+          INNER JOIN widgets AS w ON u0."WidgetId" = w."Id"
+      ) AS s ON u1."Id" = s."UserId"
+      ORDER BY u1."Id", s."Id"
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+      SELECT w."Id", w."ComponentType", w."CreatedAt", w."DefaultConfig", w."Description", w."DisplayOrder", w."Icon", w."IsActive", w."Name", w."UpdatedAt"
+      FROM widgets AS w
+      WHERE w."Id" = @p
+      LIMIT 1
+[testcontainers.org 00:00:03.41] Delete Docker container 9747c499dca4
+  Passed HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithoutAuthentication_Returns401Unauthorized [683 ms]
+  Failed HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithPosition_AddsWidgetAtSpecifiedPosition [145 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Created
+Actual:   InternalServerError
+  Stack Trace:
+     at HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithPosition_AddsWidgetAtSpecifiedPosition() in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/Widgets/AddWidgetTests.cs:line 136
+--- End of stack trace from previous location ---
+  Failed HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WhenWidgetAlreadyExists_Returns400BadRequest [13 ms]
+  Error Message:
+   System.Net.Http.HttpRequestException : Response status code does not indicate success: 500 (Internal Server Error).
+  Stack Trace:
+     at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WhenWidgetAlreadyExists_Returns400BadRequest() in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/Widgets/AddWidgetTests.cs:line 114
+--- End of stack trace from previous location ---
+  Failed HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithValidRequest_Returns201Created [7 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Created
+Actual:   InternalServerError
+  Stack Trace:
+     at HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithValidRequest_Returns201Created() in /Users/alan/Documents/Projects/Blazor/HomeWidgets/HomeWidgets/tests/HomeWidgets.IntegrationTests/Widgets/AddWidgetTests.cs:line 68
+--- End of stack trace from previous location ---
+  Passed HomeWidgets.IntegrationTests.Widgets.AddWidgetTests.AddWidget_WithNonExistentWidget_Returns404NotFound [5 ms]
+[xUnit.net 00:00:03.85]   Finished:    HomeWidgets.IntegrationTests
+
+Test Run Failed.
+Total tests: 5
+     Passed: 2
+     Failed: 3
+ Total time: 4.1822 Seconds
