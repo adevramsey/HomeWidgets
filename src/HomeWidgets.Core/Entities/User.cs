@@ -108,8 +108,9 @@ public class User : BaseEntity
 
         // Calculate position: either specified or append to end
         var order = position ?? (_userWidgets.Count > 0 ? _userWidgets.Max(uw => uw.Order) + 1 : 0);
+        bool isActive = true;
 
-        var userWidget = new UserWidget(this, widget, order);
+        var userWidget = new UserWidget(this, widget, order, isActive);
         _userWidgets.Add(userWidget);
         MarkAsUpdated();
 
@@ -146,6 +147,36 @@ public class User : BaseEntity
             }
         }
 
+        MarkAsUpdated();
+    }
+
+    /// <summary>
+    /// Activates a widget on the user's dashboard.
+    /// </summary>
+    /// <param name="widget"></param>
+    /// <exception cref="InvalidOperationException"></exception>
+    public void ActivateWidget(Widget widget)
+    {
+        var userWidget = _userWidgets.FirstOrDefault(uw => uw.WidgetId == widget.Id);
+        if (userWidget is null)
+            throw new InvalidOperationException("Widget not found on dashboard.");
+
+        userWidget.SetActive(true);
+        MarkAsUpdated();
+    }
+
+    /// <summary>
+    /// Deactivates a widget on the user's dashboard.
+    /// </summary>
+    /// <param name="widget"></param>
+    /// <exception cref="InvalidOperationException"></exception>
+    public void DeactivateWidget(Widget widget)
+    {
+        var userWidget = _userWidgets.FirstOrDefault(uw => uw.WidgetId == widget.Id);
+        if (userWidget is null)
+            throw new InvalidOperationException("Widget not found on dashboard.");
+        
+        userWidget.SetActive(false);
         MarkAsUpdated();
     }
 }

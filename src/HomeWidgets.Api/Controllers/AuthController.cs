@@ -3,7 +3,6 @@ using HomeWidgets.Core.Entities;
 using HomeWidgets.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 namespace HomeWidgets.Api.Controllers;
 
 /// <summary>

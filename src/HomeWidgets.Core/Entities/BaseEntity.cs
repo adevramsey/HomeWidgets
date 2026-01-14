@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace HomeWidgets.Core.Entities;
 
 /// <summary>
@@ -10,16 +12,19 @@ public abstract class BaseEntity
     /// Unique identifier for the entity.
     /// Using Guid for globally unique, non-sequential IDs (better for distributed systems).
     /// </summary>
+    [JsonInclude]
     public Guid Id { get; protected set; } = Guid.NewGuid();
 
     /// <summary>
     /// Timestamp when the entity was created.
     /// </summary>
+    [JsonInclude]
     public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
 
     /// <summary>
     /// Timestamp when the entity was last modified.
     /// </summary>
+    [JsonInclude]
     public DateTime? UpdatedAt { get; protected set; }
 
     /// <summary>

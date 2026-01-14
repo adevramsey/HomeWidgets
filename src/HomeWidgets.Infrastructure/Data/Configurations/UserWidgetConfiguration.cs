@@ -30,6 +30,11 @@ public class UserWidgetConfiguration : IEntityTypeConfiguration<UserWidget>
         builder.Property(uw => uw.Order)
             .IsRequired();
 
+        // Whether this widget is active on the user's dashboard
+        builder.Property(uw => uw.IsActive)
+            .IsRequired()
+            .HasDefaultValue(true);
+
         // User-specific config overrides
         builder.Property(uw => uw.Config)
             .HasColumnType("jsonb");
