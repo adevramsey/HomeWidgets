@@ -199,5 +199,21 @@ public class WidgetsController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<ActionResult<IReadOnlyList<Widget>>> GetAvailableWidgets(
+        CancellationToken cancellationToken)
+    {
+        if (GetCurrentUserId() is null)
+            return Unauthorized();
+        
+        var widgets = await _widgetRepository.GetAllAsync(cancellationToken);
+        var activeWidgets = widgets
+            .Where(w => w.IsActive)
+            .OrderBy(w => w.DisplayOrder)
+            .ToList();
+        return Ok(activeWidgets);
+    }
     
 }

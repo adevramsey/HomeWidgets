@@ -71,7 +71,8 @@ public class GetMyWidgetsTests : IClassFixture<CustomWebApplicationFactory>, IAs
     {
         // Arrange
         // Get Authorization - need this for the method since it uses [Authorize]
-        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authToken);
+        _client.DefaultRequestHeaders.Authorization = 
+            new AuthenticationHeaderValue("Bearer", _authToken);
         
         // Act
         var response = await _client.GetAsync("/api/widgets/me");
